@@ -79,7 +79,9 @@
 
 ```PowerShell
 mkdir c:\labfiles
+
 cd c:\labfiles
+
 git clone https://github.com/solliancenet/synapse-in-a-day-deployment.git synapse-in-a-day-deployment
 ```
 
@@ -94,6 +96,7 @@ git clone https://github.com/solliancenet/synapse-in-a-day-deployment.git synaps
     ```
 
 2. You will be prompted to setup your Azure PowerShell and Azure CLI context.
+
 3. You may be prompted to enter the name of your desired Azure Subscription. You can copy and paste the value from the list to select one. **Note**: Be certain to include the number next to the subscription name when you copy it.
 
     Select the resource group you selected during Task 2.2. This will make sure automation runs against the correct environment you provisioned in Azure.
@@ -103,6 +106,8 @@ git clone https://github.com/solliancenet/synapse-in-a-day-deployment.git synaps
     During the execution of the automation script you may be prompted to approve installations from PS-Gallery. Please approve to proceed with the automation.
 
     ![The Azure Cloud Shell window is displayed with a sample of the output from the preceding command.](media/untrusted-repo.png)
+
+    > **NOTE** This script will take up to 75 minutes to complete.
 
 4. Sign in into the [Power BI Portal](https://powerbi.microsoft.com/en-us/) using your Azure credentials.
 
