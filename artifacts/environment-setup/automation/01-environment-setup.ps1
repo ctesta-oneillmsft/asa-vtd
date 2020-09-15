@@ -173,6 +173,9 @@ Write-Information "Setting Key Vault Access Policy"
 Set-AzKeyVaultAccessPolicy -ResourceGroupName $resourceGroupName -VaultName $keyVaultName -UserPrincipalName $userName -PermissionsToSecrets set,delete,get,list
 Set-AzKeyVaultAccessPolicy -ResourceGroupName $resourceGroupName -VaultName $keyVaultName -ObjectId $id -PermissionsToSecrets set,delete,get,list
 
+$amlid = (Get-AzADServicePrincipal -DisplayName $amlworkspacename).id
+Set-AzKeyVaultAccessPolicy -ResourceGroupName $resourceGroupName -VaultName $keyVaultName -ObjectId $amlid -PermissionsToSecrets set,delete,get,list
+
 #remove need to ask for the password in script.
 $global:sqlPassword = $(Get-AzKeyVaultSecret -VaultName $keyVaultName -Name "SqlPassword").SecretValueText
 
