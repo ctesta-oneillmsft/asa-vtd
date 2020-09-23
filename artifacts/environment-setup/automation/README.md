@@ -26,7 +26,7 @@
 
 1. Deploy the workspace through the following Azure ARM template (press the button below):
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fsolliancenet%2Fazure-synapse-analytics-workshop-400%2Fmaster%2Fartifacts%2Fenvironment-setup%2Fautomation%2F00-asa-workspace-core.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png" /></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fctesta-oneillmsft%2Fasa-vtd%2Fmaster%2Fartifacts%2Fenvironment-setup%2fautomation%2F00-asa-workspace-core.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png" /></a>
 
 2. On the **Custom deployment** form fill in the fields described below.
 
@@ -105,7 +105,7 @@ $AzureSQLPassword="..."
 2. In the Cloud Shell window, enter the following command to clone the repository files.
 
     ```PowerShell
-    git clone https://github.com/solliancenet/azure-synapse-analytics-workshop-400.git synapse-ws-L400
+    git clone https://github.com/ctesta-oneillmsft/asa-vtd.git synapse-in-a-day-deployment
     ```
 
     ![The Azure Portal with Cloud shell opened. Git clone command is typed into the cloud shell terminal ready for execution.](../media/cloud-shell-git-clone.png)
@@ -137,9 +137,9 @@ When executing the script below, it is important to let the scripts run to compl
 1. In the Cloud Shell, change the current directory to the **automation** folder of the cloned repository by executing the following:
 
     ```PowerShell
-    git clone https://github.com/solliancenet/azure-synapse-analytics-workshop-400.git synapse-ws-L400
+    git clone https://github.com/ctesta-oneillmsft/asa-vtd.git synapse-in-a-day-deployment
 
-    cd './synapse-ws-L400/artifacts/environment-setup/automation'
+    cd 'synapse-in-a-day-deployment\artifacts\environment-setup\automation'
     ```
 
 2. Execute the **01-environment-setup.ps1** script by executing the following command:

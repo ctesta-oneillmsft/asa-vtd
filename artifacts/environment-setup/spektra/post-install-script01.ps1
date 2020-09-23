@@ -94,8 +94,8 @@ function CreateLabFilesDirectory
 function CreateCredFile($azureUsername, $azurePassword, $azureTenantID, $azureSubscriptionID, $deploymentId)
 {
   $WebClient = New-Object System.Net.WebClient
-  $WebClient.DownloadFile("https://raw.githubusercontent.com/solliancenet/azure-synapse-analytics-workshop-400/master/artifacts/environment-setup/spektra/AzureCreds.txt","C:\LabFiles\AzureCreds.txt")
-  $WebClient.DownloadFile("https://raw.githubusercontent.com/solliancenet/azure-synapse-analytics-workshop-400/master/artifacts/environment-setup/spektra/AzureCreds.ps1","C:\LabFiles\AzureCreds.ps1")
+  $WebClient.DownloadFile("https://github.com/ctesta-oneillmsft/asa-vtd/blob/master/artifacts/environment-setup/spektra/AzureCreds.txt","C:\LabFiles\AzureCreds.txt")
+  $WebClient.DownloadFile("https://github.com/ctesta-oneillmsft/asa-vtd/blob/master/artifacts/environment-setup/spektra/AzureCreds.ps1","C:\LabFiles\AzureCreds.ps1")
 
   (Get-Content -Path "C:\LabFiles\AzureCreds.txt") | ForEach-Object {$_ -Replace "ClientIdValue", ""} | Set-Content -Path "C:\LabFiles\AzureCreds.ps1"
   (Get-Content -Path "C:\LabFiles\AzureCreds.txt") | ForEach-Object {$_ -Replace "AzureUserNameValue", "$azureUsername"} | Set-Content -Path "C:\LabFiles\AzureCreds.txt"
@@ -158,7 +158,7 @@ Connect-AzAccount -Credential $cred | Out-Null
 $resourceGroupName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "*-L400*" }).ResourceGroupName
 $deploymentId =  (Get-AzResourceGroup -Name $resourceGroupName).Tags["DeploymentId"]
 
-$url = "https://raw.githubusercontent.com/solliancenet/azure-synapse-analytics-workshop-400/master/artifacts/environment-setup/spektra/deploy.parameters.post.json"
+$url = "https://github.com/ctesta-oneillmsft/asa-vtd/blob/master/artifacts/environment-setup/spektra/deploy.parameters.post.json"
 $output = "c:\LabFiles\parameters.json";
 $wclient = New-Object System.Net.WebClient;
 $wclient.CachePolicy = new-object System.Net.Cache.RequestCachePolicy([System.Net.Cache.RequestCacheLevel]::NoCacheNoStore);
@@ -168,7 +168,7 @@ $wclient.DownloadFile($url, $output)
 (Get-Content -Path "c:\LabFiles\parameters.json") | ForEach-Object {$_ -Replace "GET-DEPLOYMENT-ID", "$deploymentId"} | Set-Content -Path "c:\LabFiles\parameters.json"
 
 Write-Host "Starting main deployment." -ForegroundColor Green -Verbose
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/solliancenet/azure-synapse-analytics-workshop-400/master/artifacts/environment-setup/automation/00-asa-workspace-core.json" -TemplateParameterFile "c:\LabFiles\parameters.json"
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://github.com/ctesta-oneillmsft/asa-vtd/blob/master/artifacts/environment-setup/automation/00-asa-workspace-core.json" -TemplateParameterFile "c:\LabFiles\parameters.json"
 
 #install sql server cmdlets
 Write-Host "Installing SQL Module." -ForegroundColor Green -Verbose
@@ -181,7 +181,7 @@ Import-Module Az.CosmosDB
 
 #download the git repo...
 Write-Host "Download Git repo." -ForegroundColor Green -Verbose
-git clone https://github.com/solliancenet/azure-synapse-analytics-workshop-400.git synapse-ws-L400
+git clone https://github.com/ctesta-oneillmsft/asa-vtd.git synapse-ws-L400
 
 cd './synapse-ws-L400/artifacts/environment-setup/automation'
 
