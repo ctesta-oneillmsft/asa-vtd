@@ -11,7 +11,8 @@
     - [Task 1: Create a resource group in Azure](#task-1-create-a-resource-group-in-azure)
     - [Task 3: Create Azure Synapse Analytics workspace](#task-3-create-azure-synapse-analytics-workspace)
     - [Task 4: Download artifacts](#task-4-download-artifacts)
-    - [Task 5: Run Setup Script](#task-5-run-setup-script)
+    - [Task 5: Pre-requisites](#task-5-pre-requisites)
+    - [Task 6: Run Setup Script](#task-6-run-setup-script)
 <!-- /TOC -->
 
 ## Requirements
@@ -85,7 +86,37 @@ cd c:\labfiles
 git clone https://github.com/ctesta-oneillmsft/asa-vtd.git synapse-in-a-day-deployment
 ```
 
-### Task 5: Run Setup Script
+### Task 5: Pre-requisites
+
+* Windows PowerShell
+* Azure PowerShell
+
+    ```powershell
+    if (Get-Module -Name AzureRM -ListAvailable) {
+        Write-Warning -Message 'Az module not installed. Having both the AzureRM and Az modules installed at the same time is not supported.'
+    } else {
+        Install-Module -Name Az -AllowClobber -Scope CurrentUser
+    }
+    ```
+
+* `Az.CosmosDB` 0.1.4 cmdlet
+
+    ```powershell
+    Install-Module -Name Az.CosmosDB -RequiredVersion 0.1.4
+    ```
+
+* `sqlserver` module
+
+    ```powershell
+    Install-Module -Name SqlServer
+    ```
+
+* Install VC Redist: <https://aka.ms/vs/15/release/vc_redist.x64.exe>
+* Install MS ODBC Driver 17 for SQL Server: <https://www.microsoft.com/download/confirmation.aspx?id=56567>
+* Install SQL CMD x64: <https://go.microsoft.com/fwlink/?linkid=2082790>
+* Install Microsoft Online Services Sign-In Assistant for IT Professionals RTW: <https://www.microsoft.com/download/details.aspx?id=41950>
+
+### Task 6: Run Setup Script
 
 1. In the PowerShell window, run the following:
 
