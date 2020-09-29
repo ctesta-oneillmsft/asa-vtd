@@ -63,14 +63,15 @@
 
 2. On the **Custom deployment** form fill in the fields described below.
 
-* **Subscription**: Select your desired subscription for the deployment.
-* **Resource group**: Select the **synapse-in-a-day-demos** resource group you previously created.
-* **Unique Suffix**: This unique suffix will be used naming resources that will created as part of your deployment.
-* **SQL Administrator Login Password**: Provide a strong password for the SQLPool that will be created as part of your deployment. Your password will be needed during the next steps. Make sure you have your password noted and secured.
-  
-    > **Important**: The `location` field under 'Settings' will list the Azure regions where Azure Synapse Analytics (Preview) is available as of July 2020. This will help you find a region where the service is available without being limited to where the resource group is defined.
+   - **Subscription**: Select your desired subscription for the deployment.
+   - **Resource group**: Select the resource group you previously created.
+   - **Unique Suffix**: This unique suffix will be used naming resources that will created as part of your deployment. Make sure you follow correct Azure [Resource naming](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming) conventions.
+   - **SQL Administrator Login Password**: Provide a strong password for the SQLPool that will be created as part of your deployment. [Visit here](https://docs.microsoft.com/en-us/sql/relational-databases/security/password-policy?view=sql-server-ver15#password-complexity) to read about password rules in place. Your password will be needed during the next steps. Make sure you have your password noted and secured.
+   - **Location**: The datacenter where your Azure Synapse environment will be created.
+   
+    > **Important**: The `location` field under 'Settings' will list the Azure regions where Azure Synapse Analytics (Preview) is available as of September 2020. This will help you find a region where the service is available without being limited to where the resource group is defined.
 
-1. Check the **I agree to the terms and conditions stated above**, then select the **Purchase** button. The provisioning of your deployment resources will take approximately 13 minutes.
+3. Check the **I agree to the terms and conditions stated above**, then select the **Purchase** button. The provisioning of your deployment resources will take approximately 13 minutes. **Wait** until provisioning successfully completes before continuing. You will need the resources in place before running the scripts below.
 
     > **Note**: You may experience a deployment step failing in regards to Role Assignment. This error may safely be ignored.
 
@@ -207,49 +208,7 @@ The entire script will take a little over an hour to complete.  Major steps incl
 * Execute the setup and execute the SQL pipeline (~30 mins)
 * Execute the Cosmos DB pipeline (~25 mins)
 
-### Task 1: Create a resource group in Azure
-
-1. Log into the [Azure Portal](https://portal.azure.com) using your Azure credentials.
-
-2. On the Azure Portal home screen, select the **+ Create a resource** tile.
-
-    ![A portion of the Azure Portal home screen is displayed with the + Create a resource tile highlighted.](media/bhol_createaresource.png)
-
-3. In the **Search the Marketplace** text box, type **Resource group** and press the **Enter** key.
-
-    ![On the new resource screen Resource group is entered as a search term.](media/bhol_searchmarketplaceresourcegroup.png)
-
-4. Select the **Create** button on the **Resource group** overview page.
-
-5. On the **Create a resource group** screen, select your desired Subscription and Region. For Resource group, enter **synapse-in-a-day-demos**, then select the **Review + Create** button.
-
-    ![The Create a resource group form is displayed populated with synapse-in-a-day-demos as the resource group name.](media/bhol_resourcegroupform.png)
-
-6. Select the **Create** button once validation has passed.
-
-### Task 3: Create Azure Synapse Analytics workspace
-
-1. Deploy the workspace through the following Azure ARM template (press the button below):
-
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fctesta-oneillmsft%2Fasa-vtd%2Fmaster%2Fartifacts%2Fenvironment-setup%2fautomation%2F00-asa-workspace-core.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png" /></a>
-
-2. On the **Custom deployment** form fill in the fields described below.
-
-   - **Subscription**: Select your desired subscription for the deployment.
-   - **Resource group**: Select the resource group you previously created.
-   - **Unique Suffix**: This unique suffix will be used naming resources that will created as part of your deployment. Make sure you follow correct Azure [Resource naming](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming) conventions.
-   - **SQL Administrator Login Password**: Provide a strong password for the SQLPool that will be created as part of your deployment. [Visit here](https://docs.microsoft.com/en-us/sql/relational-databases/security/password-policy?view=sql-server-ver15#password-complexity) to read about password rules in place. Your password will be needed during the next steps. Make sure you have your password noted and secured.
-   - **Location**: The datacenter where your Azure Synapse environment will be created.
-   
-    > **Important**: The `location` field under 'Settings' will list the Azure regions where Azure Synapse Analytics (Preview) is available as of September 2020. This will help you find a region where the service is available without being limited to where the resource group is defined.
-
-3. Check the **I agree to the terms and conditions stated above**, then select the **Purchase** button. The provisioning of your deployment resources will take approximately 13 minutes. **Wait** until provisioning successfully completes before continuing. You will need the resources in place before running the scripts below.
-
-    > **Note**: You may experience a deployment step failing in regards to Role Assignment. This error may safely be ignored.
-
-    > **Note**: You can run Task 4 while you are waiting for Task 3 to complete
-
-### Task 4: Download artifacts
+### Task 1: Download artifacts
 
 > The WWI environment can be populated either with a large dataset with 30 billion records, or a smaller dataset with 3 million records. The loading time for the large dataset is 4-5 hours. If you are willing to load 30 billion records, follow the steps described in [Optional Features / 30 Billion Rows Dataset](#30-billion-rows-dataset).
 
@@ -263,7 +222,7 @@ cd c:\labfiles
 git clone https://github.com/ctesta-oneillmsft/asa-vtd.git synapse-in-a-day-deployment
 ```
 
-### Task 5: Pre-requisites
+### Task 2: Pre-requisites
 
 * Windows PowerShell
 * Azure PowerShell
@@ -293,9 +252,7 @@ git clone https://github.com/ctesta-oneillmsft/asa-vtd.git synapse-in-a-day-depl
 * Install SQL CMD x64: <https://go.microsoft.com/fwlink/?linkid=2082790>
 * Install Microsoft Online Services Sign-In Assistant for IT Professionals RTW: <https://www.microsoft.com/download/details.aspx?id=41950>
 
-### Task 6: Run Setup Script
-
-    > **Note**: Ensure that Task 3 is complete first
+### Task 3: Run Setup Script
 
 1. In the PowerShell window, run the following:
 
