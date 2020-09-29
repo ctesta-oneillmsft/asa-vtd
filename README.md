@@ -9,9 +9,9 @@
   - [Requirements](#requirements)
   - [Environment setup instructions](#environment-setup-instructions)
   - [Before starting](#before-starting)
-    - [Task 1: Download artifacts](###task-1-download-artifacts)
-    - [Task 2: Pre-requisites](###task-2-pre-requisites)
-    - [Task 3: Run Setup Script](###task-3-run-setup-script)
+    - [Task 1: Download artifacts](#task-1-download-artifacts)
+    - [Task 2: Pre-requisites](#task-2-pre-requisites)
+    - [Task 3: Run Setup Script](#task-3-run-setup-script)
 <!-- /TOC -->
 
 ## Requirements
