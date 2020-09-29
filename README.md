@@ -40,7 +40,7 @@
 
 2. On the Azure Portal home screen, select the **+ Create a resource** tile.
 
-    ![A portion of the Azure Portal home screen is displayed with the + Create a resource tile highlighted.](../../media/bhol_createaresource.png)
+    ![A portion of the Azure Portal home screen is displayed with the + Create a resource tile highlighted.](media/bhol_createaresource.png)
 
 3. In the **Search the Marketplace** text box, type **Resource group** and press the **Enter** key.
 
