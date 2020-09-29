@@ -9,11 +9,9 @@
   - [Requirements](#requirements)
   - [Environment setup instructions](#environment-setup-instructions)
   - [Before starting](#before-starting)
-    - [Task 1: Create a resource group in Azure](#task-1-create-a-resource-group-in-azure)
-    - [Task 3: Create Azure Synapse Analytics workspace](#task-3-create-azure-synapse-analytics-workspace)
-    - [Task 4: Download artifacts](#task-4-download-artifacts)
-    - [Task 5: Pre-requisites](#task-5-pre-requisites)
-    - [Task 6: Run Setup Script](#task-6-run-setup-script)
+    - [Task 1: Download artifacts](#task-4-download-artifacts)
+    - [Task 2: Pre-requisites](#task-5-pre-requisites)
+    - [Task 3: Run Setup Script](#task-6-run-setup-script)
 <!-- /TOC -->
 
 ## Requirements
