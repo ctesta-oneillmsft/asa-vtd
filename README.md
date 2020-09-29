@@ -72,6 +72,8 @@
 
     > **Note**: You may experience a deployment step failing in regards to Role Assignment. This error may safely be ignored.
 
+    > **Note**: You can run Task 4 while you are waiting for Task 3 to complete
+
 ### Task 4: Download artifacts
 
 > The WWI environment can be populated either with a large dataset with 30 billion records, or a smaller dataset with 3 million records. The loading time for the large dataset is 4-5 hours. If you are willing to load 30 billion records, follow the steps described in [Optional Features / 30 Billion Rows Dataset](#30-billion-rows-dataset).
@@ -117,6 +119,8 @@ git clone https://github.com/ctesta-oneillmsft/asa-vtd.git synapse-in-a-day-depl
 * Install Microsoft Online Services Sign-In Assistant for IT Professionals RTW: <https://www.microsoft.com/download/details.aspx?id=41950>
 
 ### Task 6: Run Setup Script
+
+    > **Note**: Ensure that Task 3 is complete first
 
 1. In the PowerShell window, run the following:
 
