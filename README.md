@@ -7,6 +7,7 @@
 
 - [Demo setup: Realize Integrated Analytical Solutions with Azure Synapse Analytics](#demo-setup-realize-integrated-analytical-solutions-with-azure-synapse-analytics)
   - [Requirements](#requirements)
+  - [Environment setup instructions](#environment-setup-instructions)
   - [Before starting](#before-starting)
     - [Task 1: Create a resource group in Azure](#task-1-create-a-resource-group-in-azure)
     - [Task 3: Create Azure Synapse Analytics workspace](#task-3-create-azure-synapse-analytics-workspace)
@@ -30,7 +31,7 @@
 
 3. A Power BI Pro or Premium account to host Power BI reports, dashboards, and configuration of streaming datasets.
 
-# Environment setup instructions
+## Environment setup instructions
 
 ## Azure Setup
 
@@ -44,13 +45,13 @@
 
 3. In the **Search the Marketplace** text box, type **Resource group** and press the **Enter** key.
 
-    ![On the new resource screen Resource group is entered as a search term.](../media/bhol_searchmarketplaceresourcegroup.png)
+    ![On the new resource screen Resource group is entered as a search term.](media/bhol_searchmarketplaceresourcegroup.png)
 
 4. Select the **Create** button on the **Resource group** overview page.
 
 5. On the **Create a resource group** screen, select your desired Subscription and Region. For Resource group, enter **synapse-in-a-day-demos**, then select the **Review + Create** button.
 
-    ![The Create a resource group form is displayed populated with Synapse-MCW as the resource group name.](../media/bhol_resourcegroupform.png)
+    ![The Create a resource group form is displayed populated with Synapse-MCW as the resource group name.](media/bhol_resourcegroupform.png)
 
 6. Select the **Create** button once validation has passed.
 
@@ -130,7 +131,7 @@ $AzureSQLPassword="..."
 
 1. In the Azure Portal, open the Azure Cloud Shell by selecting its icon from the right side of the top toolbar.
 
-    ![A portion of the Azure Portal taskbar is displayed with the Cloud Shell icon highlighted.](../media/bhol_azurecloudshellmenu.png)
+    ![A portion of the Azure Portal taskbar is displayed with the Cloud Shell icon highlighted.](media/bhol_azurecloudshellmenu.png)
 
     > **Note**: If you are prompted to choose a shell, select **Powershell**, and if asked to create a storage account for the Cloud Shell, agree to have it created.
 
@@ -140,7 +141,7 @@ $AzureSQLPassword="..."
     git clone https://github.com/ctesta-oneillmsft/asa-vtd.git synapse-in-a-day-deployment
     ```
 
-    ![The Azure Portal with Cloud shell opened. Git clone command is typed into the cloud shell terminal ready for execution.](../media/cloud-shell-git-clone.png)
+    ![The Azure Portal with Cloud shell opened. Git clone command is typed into the cloud shell terminal ready for execution.](media/cloud-shell-git-clone.png)
 
 3. Keep the Cloud Shell open.
 
@@ -154,13 +155,13 @@ $AzureSQLPassword="..."
 
 2. A message will be displayed asking you to open a new tab in your web browser, navigate to [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) and enter the code you have been given for authentication.
 
-   ![A message is displayed indicating to enter an authentication code on the device login page.](../media/bhol_devicelogin.png)
+   ![A message is displayed indicating to enter an authentication code on the device login page.](media/bhol_devicelogin.png)
 
-   ![A dialog is shown requesting the entry of a code.](../media/bhol_clicodescreen.png)
+   ![A dialog is shown requesting the entry of a code.](media/bhol_clicodescreen.png)
 
 3. Once complete, you may close the tab from the previous step and return to the Cloud Shell.
 
-   ![The JSON result showing the subscription details.](../media/shell-login-result.png)
+   ![The JSON result showing the subscription details.](media/shell-login-result.png)
 
 ### Task 3: Run environment setup PowerShell script
 
@@ -189,11 +190,11 @@ When executing the script below, it is important to let the scripts run to compl
     |--------|
     | Enter the SQL Administrator password you used in the deployment |
 
-    ![The Azure Cloud Shell window is displayed with a sample of the output from the preceding command.](../media/bhol_sampleshelloutput.png)
+    ![The Azure Cloud Shell window is displayed with a sample of the output from the preceding command.](media/bhol_sampleshelloutput.png)
 
     Select the resource group you selected during Task 3.2. This will make sure automation runs against the correct environment you provisioned in Azure.
 
-    ![The Azure Cloud Shell window is displayed with a selection of resource groups the user owns.](../media/setup-resource-group-selection.png)
+    ![The Azure Cloud Shell window is displayed with a selection of resource groups the user owns.](media/setup-resource-group-selection.png)
 
 ## Before starting
 
