@@ -106,12 +106,14 @@ git clone https://github.com/ctesta-oneillmsft/asa-vtd.git synapse-in-a-day-depl
 
 * [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/windows-powershell/install/installing-windows-powershell?view=powershell-7)
   * Azure PowerShell cmdlet
-
-    Open Windows PowerShell on your desktop and execute the following:
+ 
+    Open Windows PowerShell as an Administrator on your desktop and execute the following:
 
     ```powershell
     if (Get-Module -Name AzureRM -ListAvailable) {
         Write-Warning -Message 'Az module not installed. Having both the AzureRM and Az modules installed at the same time is not supported.'
+        Uninstall-AzureRm -ea SilentlyContinue
+        Install-Module -Name Az -AllowClobber -Scope CurrentUser
     } else {
         Install-Module -Name Az -AllowClobber -Scope CurrentUser
     }
