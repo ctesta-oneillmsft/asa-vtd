@@ -88,8 +88,10 @@ git clone https://github.com/ctesta-oneillmsft/asa-vtd.git synapse-in-a-day-depl
 
 ### Task 5: Pre-requisites
 
-* Windows PowerShell
-* Azure PowerShell
+* [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/windows-powershell/install/installing-windows-powershell?view=powershell-7)
+  * Azure PowerShell cmdlet
+
+    Open Windows PowerShell on your desktop and execute the following:
 
     ```powershell
     if (Get-Module -Name AzureRM -ListAvailable) {
@@ -99,13 +101,13 @@ git clone https://github.com/ctesta-oneillmsft/asa-vtd.git synapse-in-a-day-depl
     }
     ```
 
-* `Az.CosmosDB` 0.1.4 cmdlet
+  * `Az.CosmosDB` 0.1.4 cmdlet
 
     ```powershell
     Install-Module -Name Az.CosmosDB -RequiredVersion 0.1.4
     ```
 
-* `sqlserver` module
+  * `sqlserver` module
 
     ```powershell
     Install-Module -Name SqlServer
