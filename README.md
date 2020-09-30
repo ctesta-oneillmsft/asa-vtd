@@ -104,6 +104,11 @@ git clone https://github.com/ctesta-oneillmsft/asa-vtd.git synapse-in-a-day-depl
 
 ### Task 2: Pre-requisites
 
+
+* Install VC Redist: <https://aka.ms/vs/15/release/vc_redist.x64.exe>
+* Install MS ODBC Driver 17 for SQL Server: <https://www.microsoft.com/download/confirmation.aspx?id=56567>
+* Install SQL CMD x64: <https://go.microsoft.com/fwlink/?linkid=2082790>
+* Install Microsoft Online Services Sign-In Assistant for IT Professionals RTW: <https://www.microsoft.com/download/details.aspx?id=41950>
 * [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/windows-powershell/install/installing-windows-powershell?view=powershell-7)
   * Azure PowerShell cmdlet
  
@@ -123,7 +128,6 @@ git clone https://github.com/ctesta-oneillmsft/asa-vtd.git synapse-in-a-day-depl
 
     ```powershell
     Install-Module -Name Az.CosmosDB -AllowClobber
-    Import-Module Az.CosmosDB
     ```
 
   * `sqlserver` module
@@ -132,14 +136,17 @@ git clone https://github.com/ctesta-oneillmsft/asa-vtd.git synapse-in-a-day-depl
     Install-Module -Name SqlServer
     ```
 
-* Install VC Redist: <https://aka.ms/vs/15/release/vc_redist.x64.exe>
-* Install MS ODBC Driver 17 for SQL Server: <https://www.microsoft.com/download/confirmation.aspx?id=56567>
-* Install SQL CMD x64: <https://go.microsoft.com/fwlink/?linkid=2082790>
-* Install Microsoft Online Services Sign-In Assistant for IT Professionals RTW: <https://www.microsoft.com/download/details.aspx?id=41950>
+* **Close the Windows PowerShell window** so you can import the newly installed Az.CosmosDB cmdlet.
 
 ### Task 3: Execute setup scripts
 
-* Open PowerShell as an Administrator and change directories to the root of this repo within your local file system.
+* Open Windows PowerShell as an Administrator and execute the following:
+
+    ```powershell
+    Import-Module Az.CosmosDB
+    ```
+
+* Change directories to the root of this repo within your local file system.
 * Run `Set-ExecutionPolicy Unrestricted`.
 * Execute `Connect-AzAccount` and sign in to the ODL user account when prompted.
 * Execute `.\artifacts\environment-setup\automation\01-environment-setup.ps1`.
