@@ -7,12 +7,11 @@
 
 - [Demo setup: Realize Integrated Analytical Solutions with Azure Synapse Analytics](#demo-setup-realize-integrated-analytical-solutions-with-azure-synapse-analytics)
   - [Requirements](#requirements)
+  - [Environment setup instructions](#environment-setup-instructions)
   - [Before starting](#before-starting)
-    - [Task 1: Create a resource group in Azure](#task-1-create-a-resource-group-in-azure)
-    - [Task 3: Create Azure Synapse Analytics workspace](#task-3-create-azure-synapse-analytics-workspace)
-    - [Task 4: Download artifacts](#task-4-download-artifacts)
-    - [Task 5: Pre-requisites](#task-5-pre-requisites)
-    - [Task 6: Run Setup Script](#task-6-run-setup-script)
+    - [Task 1: Download artifacts](#task-1-download-artifacts)
+    - [Task 2: Pre-requisites](#task-2-pre-requisites)
+    - [Task 3: Run Setup Script](#task-3-run-setup-script)
 <!-- /TOC -->
 
 ## Requirements
@@ -30,7 +29,9 @@
 
 3. A Power BI Pro or Premium account to host Power BI reports, dashboards, and configuration of streaming datasets.
 
-## Before starting
+## Environment setup instructions
+
+## Azure Setup
 
 ### Task 1: Create a resource group in Azure
 
@@ -48,11 +49,11 @@
 
 5. On the **Create a resource group** screen, select your desired Subscription and Region. For Resource group, enter **synapse-in-a-day-demos**, then select the **Review + Create** button.
 
-    ![The Create a resource group form is displayed populated with synapse-in-a-day-demos as the resource group name.](media/bhol_resourcegroupform.png)
+    ![The Create a resource group form is displayed populated with Synapse-MCW as the resource group name.](media/bhol_resourcegroupform.png)
 
 6. Select the **Create** button once validation has passed.
 
-### Task 3: Create Azure Synapse Analytics workspace
+### Task 2: Create Azure Synapse Analytics workspace
 
 1. Deploy the workspace through the following Azure ARM template (press the button below):
 
@@ -72,7 +73,129 @@
 
     > **Note**: You may experience a deployment step failing in regards to Role Assignment. This error may safely be ignored.
 
-### Task 4: Download artifacts
+## Path 1: Local PowerShell
+
+### Task 1: Pre-requisites
+
+* Windows PowerShell
+* Azure PowerShell
+
+    ```powershell
+    if (Get-Module -Name AzureRM -ListAvailable) {
+        Write-Warning -Message 'Az module not installed. Having both the AzureRM and Az modules installed at the same time is not supported.'
+    } else {
+        Install-Module -Name Az -AllowClobber -Scope CurrentUser
+    }
+    ```
+
+* `Az.CosmosDB` 0.1.4 cmdlet
+
+    ```powershell
+    Install-Module -Name Az.CosmosDB -RequiredVersion 0.1.4
+    ```
+
+* `sqlserver` module
+
+    ```powershell
+    Install-Module -Name SqlServer
+    ```
+
+* Install VC Redist: <https://aka.ms/vs/15/release/vc_redist.x64.exe>
+* Install MS ODBC Driver 17 for SQL Server: <https://www.microsoft.com/download/confirmation.aspx?id=56567>
+* Install SQL CMD x64: <https://go.microsoft.com/fwlink/?linkid=2082790>
+* Install Microsoft Online Services Sign-In Assistant for IT Professionals RTW: <https://www.microsoft.com/download/details.aspx?id=41950>
+
+### Task 2: Execute setup scripts
+
+* Open PowerShell as an Administrator and change directories to the root of this repo within your local file system.
+* Run `Set-ExecutionPolicy Unrestricted`.
+* Execute `Connect-AzAccount` and sign in to the ODL user account when prompted.
+* Execute `.\artifacts\environment-setup\automation\01-environment-setup.ps1`.
+* Execute `.\artifacts\environment-setup\automation\03-environment-validate.ps1`.
+
+## Path #2 (Cloud Shell)
+
+### Task 1: Download artifacts
+
+1. In the Azure Portal, open the Azure Cloud Shell by selecting its icon from the right side of the top toolbar.
+
+    ![A portion of the Azure Portal taskbar is displayed with the Cloud Shell icon highlighted.](media/bhol_azurecloudshellmenu.png)
+
+    > **Note**: If you are prompted to choose a shell, select **Powershell**, and if asked to create a storage account for the Cloud Shell, agree to have it created.
+
+2. In the Cloud Shell window, enter the following command to clone the repository files.
+
+    ```PowerShell
+    git clone https://github.com/ctesta-oneillmsft/asa-vtd.git synapse-in-a-day-deployment
+    ```
+
+    ![The Azure Portal with Cloud shell opened. Git clone command is typed into the cloud shell terminal ready for execution.](media/cloud-shell-git-clone.png)
+
+3. Keep the Cloud Shell open.
+
+### Task 2: Establish a user context
+
+1. In the Cloud Shell, execute the following command:
+
+    ```cli
+    az login
+    ```
+
+2. A message will be displayed asking you to open a new tab in your web browser, navigate to [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) and enter the code you have been given for authentication.
+
+   ![A message is displayed indicating to enter an authentication code on the device login page.](media/bhol_devicelogin.png)
+
+   ![A dialog is shown requesting the entry of a code.](media/bhol_clicodescreen.png)
+
+3. Once complete, you may close the tab from the previous step and return to the Cloud Shell.
+
+   ![The JSON result showing the subscription details.](media/shell-login-result.png)
+
+### Task 3: Run environment setup PowerShell script
+
+When executing the script below, it is important to let the scripts run to completion. Some tasks may take longer than others to run. When a script completes execution, you will be returned to a command prompt. The total runtime of all steps in this task will take approximately 60 minutes.
+
+1. In the Cloud Shell, change the current directory to the **automation** folder of the cloned repository by executing the following:
+
+    ```PowerShell
+    git clone https://github.com/ctesta-oneillmsft/asa-vtd.git synapse-in-a-day-deployment
+
+    cd 'synapse-in-a-day-deployment\artifacts\environment-setup\automation'
+    ```
+
+2. Execute the **01-environment-setup.ps1** script by executing the following command:
+
+    ```PowerShell
+    ./01-environment-setup.ps1
+    ./03-environment-validate.ps1
+    ```
+
+    You may be prompted to enter the name of your desired Azure Subscription. You can copy and paste the value from the list to select one.
+
+    You will also be prompted for the following information for this script:
+
+    | Prompt |
+    |--------|
+    | Enter the SQL Administrator password you used in the deployment |
+
+    ![The Azure Cloud Shell window is displayed with a sample of the output from the preceding command.](media/bhol_sampleshelloutput.png)
+
+    Select the resource group you selected during Task 3.2. This will make sure automation runs against the correct environment you provisioned in Azure.
+
+    ![The Azure Cloud Shell window is displayed with a selection of resource groups the user owns.](media/setup-resource-group-selection.png)
+
+## Before starting
+
+## Steps & Timing
+
+The entire script will take a little over an hour to complete.  Major steps include:
+
+* Configure Synapse resources
+* Download all data sets and files into the data lake (~15 mins)
+* Execute the setup and execute the SQL pipeline (~30 mins)
+* Execute the Cosmos DB pipeline (~25 mins)
+
+### Task 1: Download artifacts
 
 > The WWI environment can be populated either with a large dataset with 30 billion records, or a smaller dataset with 3 million records. The loading time for the large dataset is 4-5 hours. If you are willing to load 30 billion records, follow the steps described in [Optional Features / 30 Billion Rows Dataset](#30-billion-rows-dataset).
 
@@ -86,7 +209,7 @@ cd c:\labfiles
 git clone https://github.com/ctesta-oneillmsft/asa-vtd.git synapse-in-a-day-deployment
 ```
 
-### Task 5: Pre-requisites
+### Task 2: Pre-requisites
 
 * [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/windows-powershell/install/installing-windows-powershell?view=powershell-7)
   * Azure PowerShell cmdlet
@@ -118,7 +241,7 @@ git clone https://github.com/ctesta-oneillmsft/asa-vtd.git synapse-in-a-day-depl
 * Install SQL CMD x64: <https://go.microsoft.com/fwlink/?linkid=2082790>
 * Install Microsoft Online Services Sign-In Assistant for IT Professionals RTW: <https://www.microsoft.com/download/details.aspx?id=41950>
 
-### Task 6: Run Setup Script
+### Task 3: Run Setup Script
 
 1. In the PowerShell window, run the following:
 
