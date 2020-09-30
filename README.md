@@ -136,6 +136,12 @@ git clone https://github.com/ctesta-oneillmsft/asa-vtd.git synapse-in-a-day-depl
     Install-Module -Name SqlServer -AllowClobber
     ```
 
+* Install Azure CLI
+
+    ```powershell
+    Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'; rm .\AzureCLI.msi
+    ```
+
 * **Close the Windows PowerShell window** so you can import the newly installed Az.CosmosDB cmdlet.
 
 ### Task 3: Execute setup scripts
