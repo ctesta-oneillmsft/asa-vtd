@@ -153,7 +153,7 @@ The entire script will take a little over an hour to complete.  Major steps incl
 * Change directories to the root of this repo within your local file system.
 
     ```powershell
-    cd c:\labfiles\synapse-in-a-da-deployment\artifacts\environment-setup\automation\
+    cd c:\labfiles\synapse-in-a-day-deployment\artifacts\environment-setup\automation\
     ```
 
 * Run `Set-ExecutionPolicy Unrestricted`.
