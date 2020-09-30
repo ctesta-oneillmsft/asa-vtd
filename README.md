@@ -105,17 +105,6 @@
 * Install SQL CMD x64: <https://go.microsoft.com/fwlink/?linkid=2082790>
 * Install Microsoft Online Services Sign-In Assistant for IT Professionals RTW: <https://www.microsoft.com/download/details.aspx?id=41950>
 
-Create the following file: **C:\LabFiles\AzureCreds.ps1**
-
-```powershell
-$AzureUserName="odl_user_NNNNNN@msazurelabs.onmicrosoft.com"
-$AzurePassword="..."
-$TokenGeneratorClientId="1950a258-227b-4e31-a9cf-717495945fc2"
-$AzureSQLPassword="..."
-```
-
-> The `AzureSQLPassword` value is the value passed to the `sqlAdministratorLoginPassword` parameter when running the `01-asa-workspace-core.json` ARM template. You can find this value by looking at the `SQL-USER_ASA` Key Vault secret.
-
 ### Task 2: Execute setup scripts
 
 * Open PowerShell as an Administrator and change directories to the root of this repo within your local file system.
