@@ -133,7 +133,7 @@ git clone https://github.com/ctesta-oneillmsft/asa-vtd.git synapse-in-a-day-depl
   * `sqlserver` module
 
     ```powershell
-    Install-Module -Name SqlServer
+    Install-Module -Name SqlServer -AllowClobber
     ```
 
 * **Close the Windows PowerShell window** so you can import the newly installed Az.CosmosDB cmdlet.
