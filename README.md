@@ -148,7 +148,8 @@ git clone https://github.com/ctesta-oneillmsft/asa-vtd.git synapse-in-a-day-depl
 
 * Change directories to the root of this repo within your local file system.
 * Run `Set-ExecutionPolicy Unrestricted`.
-* Execute `Connect-AzAccount` and sign in to the ODL user account when prompted.
+* Execute `Connect-AzAccount` and sign in to your Microsoft user account when prompted.
+* Execute `az login` and sign in to your Microsoft user account when prompted.
 * Execute `.\artifacts\environment-setup\automation\01-environment-setup.ps1`.
 * Execute `.\artifacts\environment-setup\automation\03-environment-validate.ps1`.
 
