@@ -273,7 +273,7 @@ if ($download)
                 products = "wwi-02/data-generators/generator-product/generator-product.csv"
                 dates = "wwi-02/data-generators/generator-date.csv"
                 customer = "wwi-02/data-generators/generator-customer.csv"
-                onnx = "wwi-02/ml/onnx-hex/product_seasonality_classifier.onnx.hex"
+                ##onnx = "wwi-02/ml/onnx-hex/product_seasonality_classifier.onnx.hex"
         }
 
         foreach ($singleFile in $singleFiles.Keys) {
@@ -387,15 +387,15 @@ $result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $
 $result
 
 
-Write-Information "Create tables in the [wwi_ml] schema in $($sqlPoolName)"
+#Write-Information "Create tables in the [wwi_ml] schema in $($sqlPoolName)"
 
-$dataLakeAccountKey = List-StorageAccountKeys -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName
-$params = @{ 
-        DATA_LAKE_ACCOUNT_NAME = $dataLakeAccountName  
-        DATA_LAKE_ACCOUNT_KEY = $dataLakeAccountKey 
-}
-$result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "05-create-tables-in-wwi-ml-schema" -Parameters $params
-$result
+#$dataLakeAccountKey = List-StorageAccountKeys -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName
+#$params = @{ 
+#        DATA_LAKE_ACCOUNT_NAME = $dataLakeAccountName  
+#        DATA_LAKE_ACCOUNT_KEY = $dataLakeAccountKey 
+#}
+#$result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "05-create-tables-in-wwi-ml-schema" -Parameters $params
+#$result
 
 Write-Information "Create tables in the [wwi_security] schema in $($sqlPoolName)"
 

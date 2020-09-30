@@ -160,7 +160,6 @@ The entire script will take a little over an hour to complete.  Major steps incl
 * Execute `Connect-AzAccount` and sign in to your Microsoft user account when prompted.
 * Execute `az login` and sign in to your Microsoft user account when prompted.
 * Execute `.\01-environment-setup.ps1`
-* Execute `.\03-environment-validate.ps1`
 
 1. You will be prompted to setup your Azure PowerShell and Azure CLI context.
 
