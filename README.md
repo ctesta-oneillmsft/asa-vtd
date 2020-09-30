@@ -13,8 +13,8 @@
     - [Task 2: Create Azure Synapse Analytics workspace](#task-2-create-azure-synapse-analytics-workspace)
   - [Before starting](#before-starting)
   - [Steps & Timing](#steps--timing)
-    - [Task 1: Download artifacts](#task-1-download-artifacts)
-    - [Task 2: Pre-requisites](#task-2-pre-requisites)
+    - [Task 1: Pre-requisites](#task-1-pre-requisites)
+    - [Task 1: Download artifacts and install PowerShell modules](#task-1-download-artifacts-and-install-powershell-modules)
     - [Task 3: Execute setup scripts](#task-3-execute-setup-scripts)
 <!-- /TOC -->
 
@@ -88,30 +88,28 @@ The entire script will take a little over an hour to complete.  Major steps incl
 - Execute the setup and execute the SQL pipeline (~30 mins)
 - Execute the Cosmos DB pipeline (~25 mins)
 
-### Task 1: Download artifacts
-
-> The WWI environment can be populated either with a large dataset with 30 billion records, or a smaller dataset with 3 million records. The loading time for the large dataset is 4-5 hours. If you are willing to load 30 billion records, follow the steps described in [Optional Features / 30 Billion Rows Dataset](#30-billion-rows-dataset).
-
-1. Open a PowerShell Window, run the following command to download the artifacts
-
-```PowerShell
-mkdir c:\labfiles
-
-cd c:\labfiles
-
-git clone https://github.com/ctesta-oneillmsft/asa-vtd.git synapse-in-a-day-deployment
-```
-
-### Task 2: Pre-requisites
-
+### Task 1: Pre-requisites
 
 * Install VC Redist: <https://aka.ms/vs/15/release/vc_redist.x64.exe>
 * Install MS ODBC Driver 17 for SQL Server: <https://www.microsoft.com/download/confirmation.aspx?id=56567>
 * Install SQL CMD x64: <https://go.microsoft.com/fwlink/?linkid=2082790>
 * Install Microsoft Online Services Sign-In Assistant for IT Professionals RTW: <https://www.microsoft.com/download/details.aspx?id=41950>
 * [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/windows-powershell/install/installing-windows-powershell?view=powershell-7)
-  * Azure PowerShell cmdlet
- 
+
+### Task 1: Download artifacts and install PowerShell modules
+
+1. Open a PowerShell Window as an administrator, run the following command to download the artifacts
+
+    ```powershell
+    mkdir c:\labfiles
+
+    cd c:\labfiles
+
+    git clone https://github.com/ctesta-oneillmsft/asa-vtd.git synapse-in-a-day-deployment
+    ```
+
+* Install Azure PowerShell cmdlet
+
     Open Windows PowerShell as an Administrator on your desktop and execute the following:
 
     ```powershell
@@ -124,13 +122,13 @@ git clone https://github.com/ctesta-oneillmsft/asa-vtd.git synapse-in-a-day-depl
     }
     ```
 
-  * `Az.CosmosDB` cmdlet
+* Install `Az.CosmosDB` cmdlet
 
     ```powershell
     Install-Module -Name Az.CosmosDB -AllowClobber
     ```
 
-  * `sqlserver` module
+* Install `sqlserver` module
 
     ```powershell
     Install-Module -Name SqlServer -AllowClobber
@@ -153,11 +151,16 @@ git clone https://github.com/ctesta-oneillmsft/asa-vtd.git synapse-in-a-day-depl
     ```
 
 * Change directories to the root of this repo within your local file system.
+
+    ```powershell
+    cd c:\labfiles\synapse-in-a-da-deployment\artifacts\environment-setup\automation\
+    ```
+
 * Run `Set-ExecutionPolicy Unrestricted`.
 * Execute `Connect-AzAccount` and sign in to your Microsoft user account when prompted.
 * Execute `az login` and sign in to your Microsoft user account when prompted.
-* Execute `.\artifacts\environment-setup\automation\01-environment-setup.ps1`.
-* Execute `.\artifacts\environment-setup\automation\03-environment-validate.ps1`.
+* Execute `.\01-environment-setup.ps1`
+* Execute `.\03-environment-validate.ps1`
 
 1. You will be prompted to setup your Azure PowerShell and Azure CLI context.
 
