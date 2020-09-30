@@ -50,10 +50,6 @@ if($IsCloudLabs){
         }
         Import-Module "..\solliance-synapse-automation"
 
-        Connect-AzAccount
-
-        az login
-
         #Different approach to run automation in Cloud Shell
         $subs = Get-AzSubscription | Select-Object -ExpandProperty Name
         if($subs.GetType().IsArray -and $subs.length -gt 1){
@@ -66,6 +62,8 @@ if($IsCloudLabs){
                 $selectedSubName = $subs[$selectedSubIdx]
                 Write-Information "Selecting the $selectedSubName subscription"
                 Select-AzSubscription -SubscriptionName $selectedSubName
+
+                az account set --subscription $selectedSubName
         }
 
         $resourceGroupName = Read-Host "Enter the resource group name";
