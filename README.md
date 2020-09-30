@@ -119,10 +119,11 @@ git clone https://github.com/ctesta-oneillmsft/asa-vtd.git synapse-in-a-day-depl
     }
     ```
 
-  * `Az.CosmosDB` 0.1.4 cmdlet
+  * `Az.CosmosDB` cmdlet
 
     ```powershell
-    Install-Module -Name Az.CosmosDB -RequiredVersion 0.1.4
+    Install-Module -Name Az.CosmosDB -AllowClobber
+    Import-Module Az.CosmosDB
     ```
 
   * `sqlserver` module
