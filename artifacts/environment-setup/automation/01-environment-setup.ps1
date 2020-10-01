@@ -347,6 +347,8 @@ if ($download)
     }
 }
 
+Refresh-Tokens
+
 Write-Information "Start the $($sqlPoolName) SQL pool if needed."
 
 $result = Get-SQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName
@@ -649,6 +651,8 @@ foreach ($dataset in $loadingDatasets.Keys) {
         Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 }
 
+Refresh-Tokens
+
 Write-Information "Create pipeline to load PoC data into the SQL pool"
 
 $params = @{
@@ -678,8 +682,6 @@ foreach ($dataset in $loadingDatasets.Keys) {
         $result = Delete-ASAObject -WorkspaceName $workspaceName -Category "datasets" -Name $dataset
         Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 }
-
-
 
 Write-Information "Create tables in wwi_perf schema in SQL pool $($sqlPoolName)"
 
@@ -952,6 +954,8 @@ foreach ($sqlScriptName in $sqlScripts.Keys) {
         $result
 }
 
+Refresh-Tokens
+
 #
 # =============== COSMOS DB IMPORT - MUST REMAIN LAST IN SCRIPT !!! ====================
 #                         
@@ -1071,6 +1075,8 @@ Update-AzCosmosDBSqlContainer -ResourceGroupName $resourceGroupName `
         -Name $cosmosDbContainer -Throughput 400 `
         -PartitionKeyKind $container.Resource.PartitionKey.Kind `
         -PartitionKeyPath $container.Resource.PartitionKey.Paths
+
+Refresh-Tokens
 
 Write-Information "Starting PowerBI Artifact Provisioning"
 
