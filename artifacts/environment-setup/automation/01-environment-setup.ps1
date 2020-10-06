@@ -1120,7 +1120,7 @@ $temp = "" | select-object @{Name = "FileName"; Expression = {"images"}},
 $reportList.Add($temp)
 
 $powerBIDataSetConnectionTemplate = Get-Content -Path "$templatesPath/powerbi_dataset_connection.json"
-$powerBIName = "asaexppowerbi$($uniqueId)"
+$powerBIName = "asapowerbi$($uniqueId)"
 
 foreach ($powerBIReport in $reportList) {
 
@@ -1148,7 +1148,7 @@ Write-Information "Setting PowerBI Report Data Connections"
              single loop resulted in inconsistent results. Pushing the two activities far away 
              from each other in separate loops helped. #>
 
-$powerBIDataSetConnectionUpdateRequest = $powerBIDataSetConnectionTemplate.Replace("#TARGET_SERVER#", "asaexpworkspace$($uniqueId).sql.azuresynapse.net").Replace("#TARGET_DATABASE#", "SQLPool01") |Out-String
+$powerBIDataSetConnectionUpdateRequest = $powerBIDataSetConnectionTemplate.Replace("#TARGET_SERVER#", "asaworkspace$($uniqueId).sql.azuresynapse.net").Replace("#TARGET_DATABASE#", "SQLPool01") |Out-String
 
 foreach ($powerBIReport in $reportList) {
         if($powerBIReport.Name -ne "Dashboard-Images")
