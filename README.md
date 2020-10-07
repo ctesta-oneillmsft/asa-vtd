@@ -108,7 +108,7 @@ The entire script will take a little over an hour to complete.  Major steps incl
     git clone https://github.com/ctesta-oneillmsft/asa-vtd.git synapse-in-a-day-deployment
     ```
 
-* Install Azure PowerShell cmdlet
+* Install Azure PowerShell module
 
     Open Windows PowerShell as an Administrator on your desktop and execute the following:
 
@@ -122,7 +122,7 @@ The entire script will take a little over an hour to complete.  Major steps incl
     }
     ```
 
-* Install `Az.CosmosDB` cmdlet
+* Install `Az.CosmosDB` module
 
     ```powershell
     Install-Module -Name Az.CosmosDB -AllowClobber
