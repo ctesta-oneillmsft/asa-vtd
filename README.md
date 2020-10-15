@@ -14,7 +14,7 @@
   - [Before starting](#before-starting)
   - [Steps & Timing](#steps--timing)
     - [Task 1: Pre-requisites](#task-1-pre-requisites)
-    - [Task 1: Download artifacts and install PowerShell modules](#task-1-download-artifacts-and-install-powershell-modules)
+    - [Task 2: Download artifacts and install PowerShell modules](#task-2-download-artifacts-and-install-powershell-modules)
     - [Task 3: Execute setup scripts](#task-3-execute-setup-scripts)
 <!-- /TOC -->
 
@@ -90,13 +90,14 @@ The entire script will take a little over an hour to complete.  Major steps incl
 
 ### Task 1: Pre-requisites
 
-* Install VC Redist: <https://aka.ms/vs/15/release/vc_redist.x64.exe>
-* Install MS ODBC Driver 17 for SQL Server: <https://www.microsoft.com/download/confirmation.aspx?id=56567>
-* Install SQL CMD x64: <https://go.microsoft.com/fwlink/?linkid=2082790>
-* Install Microsoft Online Services Sign-In Assistant for IT Professionals RTW: <https://www.microsoft.com/download/details.aspx?id=41950>
-* [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/windows-powershell/install/installing-windows-powershell?view=powershell-7)
+- Install VC Redist: <https://aka.ms/vs/15/release/vc_redist.x64.exe>
+- Install MS ODBC Driver 17 for SQL Server: <https://www.microsoft.com/download/confirmation.aspx?id=56567>
+- Install SQL CMD x64: <https://go.microsoft.com/fwlink/?linkid=2082790>
+- Install Microsoft Online Services Sign-In Assistant for IT Professionals RTW: <https://www.microsoft.com/download/details.aspx?id=41950>
+- Install [Git client](https://git-scm.com/downloads)
+- [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/windows-powershell/install/installing-windows-powershell?view=powershell-7)
 
-### Task 1: Download artifacts and install PowerShell modules
+### Task 2: Download artifacts and install PowerShell modules
 
 1. Open a PowerShell Window as an administrator, run the following command to download the artifacts
 
@@ -147,6 +148,12 @@ The entire script will take a little over an hour to complete.  Major steps incl
 * Open Windows PowerShell as an Administrator and execute the following:
 
     ```powershell
+    Set-ExecutionPolicy Unrestricted
+    ```
+
+* Execute the following to import the `Az.CosmosDB` module:
+
+    ```powershell
     Import-Module Az.CosmosDB
     ```
 
@@ -156,7 +163,6 @@ The entire script will take a little over an hour to complete.  Major steps incl
     cd c:\labfiles\synapse-in-a-day-deployment\artifacts\environment-setup\automation\
     ```
 
-* Run `Set-ExecutionPolicy Unrestricted`.
 * Execute `Connect-AzAccount` and sign in to your Microsoft user account when prompted.
 * Execute `az login` and sign in to your Microsoft user account when prompted.
 * Execute `.\01-environment-setup.ps1`
