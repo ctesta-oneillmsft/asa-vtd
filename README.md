@@ -35,6 +35,10 @@
 
 ## Environment setup instructions
 
+> **Note:**
+>
+> The entire setup process will take from 1.5 to 2 hours to complete.
+
 ## Azure Setup
 
 ### Task 1: Create a resource group in Azure
@@ -81,7 +85,7 @@
 
 ## Steps & Timing
 
-The entire script will take a little over an hour to complete.  Major steps include:
+The entire script will take between 1.5 and 2 hours to complete. Major steps include:
 
 - Configure Synapse resources
 - Download all data sets and files into the data lake (~15 mins)
