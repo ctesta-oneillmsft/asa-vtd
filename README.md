@@ -16,6 +16,8 @@
     - [Task 1: Pre-requisites](#task-1-pre-requisites)
     - [Task 2: Download artifacts and install PowerShell modules](#task-2-download-artifacts-and-install-powershell-modules)
     - [Task 3: Execute setup scripts](#task-3-execute-setup-scripts)
+      - [Potential errors that you can ignore](#potential-errors-that-you-can-ignore)
+    - [Task 4: Configure Power BI dataset credentials](#task-4-configure-power-bi-dataset-credentials)
     - [Task 4: Pause SQL pool](#task-4-pause-sql-pool)
 <!-- /TOC -->
 
@@ -186,21 +188,37 @@ The entire script will take between 1.5 and 2 hours to complete. Major steps inc
 
     > **NOTE** This script will take up to 75 minutes to complete.
 
-3. Sign in into the [Power BI Portal](https://powerbi.microsoft.com/en-us/) using your Azure credentials.
+#### Potential errors that you can ignore
 
-4. From the hamburger menu select **Workspaces** to access the list of workspaces available to you. Select your workspace.
+You may encounter a few errors and warnings during the script execution. The errors below can safely be ignored:
+
+1. The following error may occur when creating SQL users and adding role assignments in the dedicated SQL pool, and can safely be ignored: `Principal 'xxx@xxx.com' could not be created. Only connections established with Active Directory accounts can create other Active Directory users.`
+
+    ![Error is displayed.](media/error-cannot-create-principal.png "Cannot create principal")
+
+2. Errors when creating the Synapse notebooks (*.ipynb files) that state `Unsupported operation: CreateOrUpdateNotebookResource` can safely be ignored.
+
+    ![Errors are displayed.](media/error-notebook-create.png "Notebook creation errors")
+
+### Task 4: Configure Power BI dataset credentials
+
+Complete this task after setup has completed.
+
+1. Sign in into the [Power BI Portal](https://powerbi.microsoft.com/en-us/) using your Azure credentials.
+
+2. From the hamburger menu select **Workspaces** to access the list of workspaces available to you. Select your workspace.
 
     ![The workspaces button from the hamburger menu is selected to list workspaces available.](media/powerbi_workspace_selection.png)
 
-5. Select the **Settings** icon from the top right bar, and select **Settings** again to navigate to the settings page.
+3. Select the **Settings** icon from the top right bar, and select **Settings** again to navigate to the settings page.
 
     ![The settings button on the Power BI portal clicked and the Settings selection on the context menu selected.](media/powerbi_settings_menu.png)
 
-6. Select **datasets** tab to access the list of datasets available. Then select `2-Billion Rows Demo` dataset to access its settings. From the settings page open **Data source credentials** and select **Edit credentials**.
+4. Select **datasets** tab to access the list of datasets available. Then select `2-Billion Rows Demo` dataset to access its settings. From the settings page open **Data source credentials** and select **Edit credentials**.
 
     ![The datasets tab is selected. From the list of datasets 2-Billion Rows Demo is selected. Edit credentials will be selected next. ](media/powerbi_datasource_credentials.png)
 
-7. Select **Microsoft Account** for the **Authentication method** and select **Sign In** to complete the process.
+5. Select **Microsoft Account** for the **Authentication method** and select **Sign In** to complete the process.
 
     ![From the list of authentication methods Microsoft Account is picked. The sign in button is selected. ](media/powerbi_datasource_credentials-update.png)
 
