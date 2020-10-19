@@ -588,6 +588,7 @@ $loadingDatasets = @{
 }
 
 foreach ($dataset in $loadingDatasets.Keys) {
+        Refresh-Tokens
         Write-Information "Creating dataset $($dataset)"
         $result = Create-Dataset -DatasetsPath $datasetsPath -WorkspaceName $workspaceName -Name $dataset -LinkedServiceName $loadingDatasets[$dataset]
         Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
@@ -646,6 +647,7 @@ $loadingDatasets = @{
 }
 
 foreach ($dataset in $loadingDatasets.Keys) {
+        Refresh-Tokens
         Write-Information "Creating dataset $($dataset)"
         $result = Create-Dataset -DatasetsPath $datasetsPath -WorkspaceName $workspaceName -Name $dataset -LinkedServiceName $loadingDatasets[$dataset]
         Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
@@ -739,6 +741,7 @@ $datasets = @{
 }
 
 foreach ($dataset in $datasets.Keys) {
+        Refresh-Tokens
         Write-Information "Creating dataset $($dataset)"
         $result = Create-Dataset -DatasetsPath $datasetsPath -WorkspaceName $workspaceName -Name $dataset -LinkedServiceName $datasets[$dataset]
         Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
@@ -811,6 +814,7 @@ $datasets = @{
 $dataLakeAccountName 
 
 foreach ($dataset in $datasets.Keys) {
+        Refresh-Tokens
         Write-Information "Creating dataset $($dataset)"
         $result = Create-Dataset -DatasetsPath $datasetsPath -WorkspaceName $workspaceName -Name $dataset -LinkedServiceName $datasets[$dataset]
         Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
