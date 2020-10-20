@@ -19,8 +19,8 @@
     - [Task 3: Execute setup scripts](#task-3-execute-setup-scripts)
       - [Potential errors that you can ignore](#potential-errors-that-you-can-ignore)
     - [Task 4: Configure Power BI dataset credentials](#task-4-configure-power-bi-dataset-credentials)
-    - [Task 4: Pause SQL pool](#task-4-pause-sql-pool)
-    - [Task 5: Delete lab setup VM](#task-5-delete-lab-setup-vm)
+    - [Task 5: Pause SQL pool](#task-5-pause-sql-pool)
+    - [Task 6: Delete lab setup VM](#task-6-delete-lab-setup-vm)
 <!-- /TOC -->
 
 ## Requirements
@@ -270,7 +270,7 @@ Complete this task after setup has completed.
 
     ![From the list of authentication methods Microsoft Account is picked. The sign in button is selected. ](media/powerbi_datasource_credentials-update.png)
 
-### Task 4: Pause SQL pool
+### Task 5: Pause SQL pool
 
 > **Note:**
 > 
@@ -286,7 +286,7 @@ Complete this task after setup has completed.
 
     ![The pause button is highlighted.](media/sql-pool-pause.png "Pause the SQL pool")
 
-### Task 5: Delete lab setup VM
+### Task 6: Delete lab setup VM
 
 You no longer need the virtual machine if you created one for this lab setup.
 
