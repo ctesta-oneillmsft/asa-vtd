@@ -10,7 +10,8 @@
   - [Environment setup instructions](#environment-setup-instructions)
   - [Azure Setup](#azure-setup)
     - [Task 1: Create a resource group in Azure](#task-1-create-a-resource-group-in-azure)
-    - [Task 2: Create Azure Synapse Analytics workspace](#task-2-create-azure-synapse-analytics-workspace)
+    - [Task 2: Create an Azure VM for the deployment scripts](#task-2-create-an-azure-vm-for-the-deployment-scripts)
+    - [Task 3: Create Azure Synapse Analytics workspace](#task-3-create-azure-synapse-analytics-workspace)
   - [Before starting](#before-starting)
   - [Steps & Timing](#steps--timing)
     - [Task 1: Pre-requisites](#task-1-pre-requisites)
@@ -19,6 +20,7 @@
       - [Potential errors that you can ignore](#potential-errors-that-you-can-ignore)
     - [Task 4: Configure Power BI dataset credentials](#task-4-configure-power-bi-dataset-credentials)
     - [Task 4: Pause SQL pool](#task-4-pause-sql-pool)
+    - [Task 5: Delete lab setup VM](#task-5-delete-lab-setup-vm)
 <!-- /TOC -->
 
 ## Requirements
@@ -64,7 +66,53 @@
 
 6. Select the **Create** button once validation has passed.
 
-### Task 2: Create Azure Synapse Analytics workspace
+### Task 2: Create an Azure VM for the deployment scripts
+
+We highly recommend executing the PowerShell scripts on an Azure Virtual Machine instead of from your local machine. Doing so eliminates issues due to pre-existing dependencies and more importantly, network/bandwidth-related issues while executing the scripts.
+
+1. In the [Azure portal](https://portal.azure.com), type in "virtual machines" in the top search menu and then select **Virtual machines** from the results.
+
+    ![In the Services search result list, Virtual machines is selected.](media/azure-create-vm-search.png "Virtual machines")
+
+2. Select **+ Add** on the Virtual machines page and then select the **Virtual machine** option.
+
+3. In the **Basics** tab, complete the following:
+
+   | Field                          | Value                                              |
+   | ------------------------------ | ------------------------------------------         |
+   | Subscription                   | _select the appropriate subscription_              |
+   | Resource group                 | _select `synapse-in-a-day-demos`_                      |
+   | Virtual machine name           | _`synapse-lab-setup-vm` (or unique name if not available)_      |
+   | Region                         | _select the resource group's location_             |
+   | Availability options           | _select `No infrastructure redundancy required`_   |
+   | Image                          | _select `Windows 10 Pro, Version 1809 - Gen1`_     |
+   | Azure Spot instance            | _select `No`_                                      |
+   | Size                           | _select `Standard_D2s_v3`_                         |
+   | Username                       | _select `labuser`_                             |
+   | Password                       | _enter a password you will remember_               |
+   | Public inbound ports           | _select `Allow selected ports`_                    |
+   | Select inbound ports           | _select `RDP (3389)`_                              |
+   | Licensing                      | _select the option to confirm that you have an  eligible Windows 10 license with multi-tenant hosting rights._ |
+
+   ![The form fields are completed with the previously described settings.](media/azure-create-vm-1.png "Create a virtual machine")
+
+4. Select **Review + create**. On the review screen, select **Create**. After the deployment completes, select **Go to resource** to go to the virtual machine.
+
+    ![The Go to resource option is selected.](media/azure-create-vm-2.png "Go to resource")
+
+5. Select **Connect** from the actions menu and choose **RDP**.
+
+    ![The option to connect to the virtual machine via RDP is selected.](media/azure-vm-connect.png "Connect via RDP")
+
+6. On the **Connect** tab, select **Download RDP File**.
+
+    ![Download the RDP file to connect to the Power BI virtual machine.](media/azure-vm-connect-2.png "Download RDP File")
+
+7. Open the RDP file and select **Connect** to access the virtual machine. When prompted for credentials, enter `labuser` for the username and the password you chose. Select the option to allow the security certificate when prompted.
+
+    ![Connect to a remote host.](media/azure-vm-connect-3.png "Connect to a remote host")
+
+### Task 3: Create Azure Synapse Analytics workspace
 
 1. Deploy the workspace through the following Azure ARM template (press the button below):
 
@@ -237,6 +285,14 @@ Complete this task after setup has completed.
 3. Select **|| Pause** to pause the pool.
 
     ![The pause button is highlighted.](media/sql-pool-pause.png "Pause the SQL pool")
+
+### Task 5: Delete lab setup VM
+
+You no longer need the virtual machine if you created one for this lab setup.
+
+1. Open the VM in your Azure resource group, select **Delete**, then select **Yes** when prompted.
+
+    ![The delete button is highlighted.](media/delete-vm.png "Delete VM")
 
 <!-- ### Task 8: Location Analytics Streaming Dataset Setup
 
