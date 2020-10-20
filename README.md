@@ -154,7 +154,7 @@ The entire script will take between 1.5 and 2 hours to complete. Major steps inc
 
 ### Task 2: Download artifacts and install PowerShell modules
 
-1. Open a PowerShell Window as an administrator, run the following command to download the artifacts
+1. From your **lab VM**, open a PowerShell Window as an administrator, run the following command to download the artifacts
 
     ```powershell
     mkdir c:\labfiles
@@ -200,7 +200,7 @@ The entire script will take between 1.5 and 2 hours to complete. Major steps inc
 
 ### Task 3: Execute setup scripts
 
-* Open Windows PowerShell as an Administrator and execute the following:
+* From your **lab VM**, open Windows PowerShell as an Administrator and execute the following:
 
     ```powershell
     Set-ExecutionPolicy Unrestricted
