@@ -603,6 +603,7 @@ foreach ($dataset in $loadingDatasets.Keys) {
 }
 
 Write-Information "Create pipeline to load the SQL pool"
+Refresh-Tokens
 
 $params = @{
         BLOB_STORAGE_LINKED_SERVICE_NAME = $blobStorageAccountName
@@ -616,6 +617,7 @@ $result = Create-Pipeline -PipelinesPath $pipelinesPath -WorkspaceName $workspac
 Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 
 Write-Information "Running pipeline $($loadingPipelineName)"
+Refresh-Tokens
 
 $result = Run-Pipeline -WorkspaceName $workspaceName -Name $loadingPipelineName
 $result = Wait-ForPipelineRun -WorkspaceName $workspaceName -RunId $result.runId
@@ -629,6 +631,7 @@ $result = Delete-ASAObject -WorkspaceName $workspaceName -Category "pipelines" -
 Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 
 foreach ($dataset in $loadingDatasets.Keys) {
+	Refresh-Tokens
         Write-Information "Deleting dataset $($dataset)"
         $result = Delete-ASAObject -WorkspaceName $workspaceName -Category "datasets" -Name $dataset
         Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
