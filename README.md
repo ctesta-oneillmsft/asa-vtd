@@ -87,7 +87,7 @@ We highly recommend executing the PowerShell scripts on an Azure Virtual Machine
    | Availability options           | _select `No infrastructure redundancy required`_   |
    | Image                          | _select `Windows 10 Pro, Version 1809 - Gen1`_     |
    | Azure Spot instance            | _select `No`_                                      |
-   | Size                           | _select `Standard_DS3_v2`_                         |
+   | Size                           | _select `Standard_D8s_v3`_                         |
    | Username                       | _select `labuser`_                             |
    | Password                       | _enter a password you will remember_               |
    | Public inbound ports           | _select `Allow selected ports`_                    |
@@ -220,15 +220,16 @@ The entire script will take between 1.5 and 2 hours to complete. Major steps inc
 
 * Execute `Connect-AzAccount` and sign in to your Microsoft user account when prompted.
 * Execute `az login` and sign in to your Microsoft user account when prompted.
+
+    > If you receive the following error, and have already closed and re-opened the PowerShell window, you need to restart your computer and restart the steps in this task: `The term 'az' is not recognized as the name of a cmdlet, function, script file, or operable program`.
+
 * Execute `.\01-environment-setup.ps1`
 
 1. You will be prompted to setup your Azure PowerShell and Azure CLI context.
 
-2. You may be prompted to enter the name of your desired Azure Subscription. You can copy and paste the value from the list to select one. **Note**: Be certain to include the number next to the subscription name when you copy it.
+2. You may be prompted to enter the name of your desired Azure Subscription. You can copy and paste the value from the list to select one.
 
-    Select the resource group you selected during Task 2.2. This will make sure automation runs against the correct environment you provisioned in Azure.
-
-    ![The Azure Cloud Shell window is displayed with a selection of resource groups the user owns.](media/setup-resource-group-selection.png)
+3. Enter the name of the resource group you created at the beginning of the environment setup (such as `synapse-in-a-day-demos`). This will make sure automation runs against the correct environment you provisioned in Azure.
 
     During the execution of the automation script you may be prompted to approve installations from PS-Gallery. Please approve to proceed with the automation.
 
