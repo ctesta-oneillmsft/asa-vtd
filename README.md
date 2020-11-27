@@ -225,7 +225,7 @@ The entire script will take between 1.5 and 2 hours to complete. Major steps inc
 
 * Execute `Connect-AzAccount` and sign in to your Microsoft user account when prompted.
 
-> [!WARNING]: You may recieve the message "TenantId 'xxxxxx-xxxx-xxxx-xxxx' contains more than one active subscription. First one will be selected for further use. You can ignore this at this point, but if you want to select another subscription, use Set-AzContext". In which case you can run ```powershell Set-AzContext SubsciptionName``` to select the subscription you wish to use.
+    > [!WARNING]: You may recieve the message "TenantId 'xxxxxx-xxxx-xxxx-xxxx' contains more than one active subscription. First one will be selected for further use. You can ignore this at this point, but if you want to select another subscription, use Set-AzContext". In which case you can run ```powershell Set-AzContext SubsciptionName``` to select the subscription you wish to use.
 
 * Execute `az login` and sign in to your Microsoft user account when prompted.
 
