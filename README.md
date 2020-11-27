@@ -186,6 +186,7 @@ Perform all of the steps below from your **deployment VM**:
         Install-Module -Name Az -AllowClobber -Scope CurrentUser
     }
     ```
+
   > [!Note]: You may be prompted to install NuGet providers, and recieve a prumpt that you are installing the module drom an untrusted repository. Select **Yes** in both instances to proceed with the setup
 
 * Install `Az.CosmosDB` module

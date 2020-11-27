@@ -1110,6 +1110,9 @@ Add-PowerBIWorkspaceUser $wsId $principalId "Contributor" "App";
 
 Write-Information "Uploading PowerBI Reports"
 
+Refresh-Tokens
+Refresh-Token -TokenType PowerBI
+
 $reportList = New-Object System.Collections.ArrayList
 $temp = "" | select-object @{Name = "FileName"; Expression = {"1. CDP Vision Demo"}}, 
                                 @{Name = "Name"; Expression = {"1-CDP Vision Demo"}}, 
@@ -1138,6 +1141,8 @@ $powerBIDataSetConnectionTemplate = Get-Content -Path "$templatesPath/powerbi_da
 $powerBIName = "asapowerbi$($uniqueId)"
 
 foreach ($powerBIReport in $reportList) {
+
+    Refresh-Token -TokenType PowerBI
 
     Write-Information "Uploading $($powerBIReport.Name) Report"
 
