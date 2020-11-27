@@ -200,6 +200,7 @@ The entire script will take between 1.5 and 2 hours to complete. Major steps inc
     Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'; rm .\AzureCLI.msi
     ```
 **IMPORTANT**
+
 * **Close the Windows PowerShell window** so you can import the newly installed Az.CosmosDB cmdlet.
 
 ### Task 3: Execute setup scripts
