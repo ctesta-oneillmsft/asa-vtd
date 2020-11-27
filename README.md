@@ -177,13 +177,8 @@ The entire script will take between 1.5 and 2 hours to complete. Major steps inc
         Install-Module -Name Az -AllowClobber -Scope CurrentUser
     }
     ```
-<<<<<<< HEAD
 
-  > [!Note]: You may be prompted to install NuGet providers, and recieve a prumpt that you are installing the module drom an untrusted repository. Select **Yes** in both instances to proceed with the setup
-=======
-  
-    > [!Note]: You may be prompted to install NuGet providers, and recieve a prompt that you are installing the module from an untrusted repository. Select **Yes** followed by **Yes to All** respectively to proceed with the setup
->>>>>>> 179b18fb29219873deb1f7f6eee45ef22181bd63
+  > [!Note]: You may be prompted to install NuGet providers, and receive a prompt that you are installing the module from an untrusted repository. Select **Yes** in both instances to proceed with the setup
 
 * Install `Az.CosmosDB` module
 
