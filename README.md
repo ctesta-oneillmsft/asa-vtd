@@ -108,9 +108,13 @@ We highly recommend executing the PowerShell scripts on an Azure Virtual Machine
 
     ![Download the RDP file to connect to the Power BI virtual machine.](media/azure-vm-connect-2.png "Download RDP File")
 
-7. Open the RDP file and select **Connect** to access the virtual machine. When prompted for credentials, enter `labuser` for the username and the password you chose. Select the option to allow the security certificate when prompted.
+7. Open the RDP file and select **Connect** to access the virtual machine. When prompted for credentials, enter `labuser` for the username and the password you chose.
 
     ![Connect to a remote host.](media/azure-vm-connect-3.png "Connect to a remote host")
+
+    Click Yes to connect despite security certificate errors when prompted.
+
+    ![The Yes button is highlighted.](media/rdp-connect-certificate.png "Remote Desktop Connection")
 
 ### Task 3: Create Azure Synapse Analytics workspace
 
@@ -122,13 +126,14 @@ We highly recommend executing the PowerShell scripts on an Azure Virtual Machine
 
    - **Subscription**: Select your desired subscription for the deployment.
    - **Resource group**: Select the resource group you previously created.
+   - **Region**: The datacenter where your Azure Synapse environment will be created.
+
+        > **Important**: The `Region` field under 'Parameters' will list the Azure regions where Azure Synapse Analytics is available as of November 2020. This will help you find a region where the service is available without being limited to where the resource group is defined.
+
    - **Unique Suffix**: This unique suffix will be used naming resources that will created as part of your deployment. Make sure you follow correct Azure [Resource naming](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming) conventions.
    - **SQL Administrator Login Password**: Provide a strong password for the SQLPool that will be created as part of your deployment. [Visit here](https://docs.microsoft.com/en-us/sql/relational-databases/security/password-policy?view=sql-server-ver15#password-complexity) to read about password rules in place. Your password will be needed during the next steps. Make sure you have your password noted and secured.
-   - **Location**: The datacenter where your Azure Synapse environment will be created.
-   
-    > **Important**: The `location` field under 'Settings' will list the Azure regions where Azure Synapse Analytics (Preview) is available as of September 2020. This will help you find a region where the service is available without being limited to where the resource group is defined.
 
-3. Check the **I agree to the terms and conditions stated above**, then select the **Purchase** button. The provisioning of your deployment resources will take approximately 13 minutes. **Wait** until provisioning successfully completes before continuing. You will need the resources in place before running the scripts below.
+3. Select the **Review + create** button, then **Create**. The provisioning of your deployment resources will take approximately 13 minutes. **Wait** until provisioning successfully completes before continuing. You will need the resources in place before running the scripts below.
 
     > **Note**: You may experience a deployment step failing in regards to Role Assignment. This error may safely be ignored.
 
@@ -145,6 +150,8 @@ The entire script will take between 1.5 and 2 hours to complete. Major steps inc
 
 ### Task 1: Pre-requisites
 
+Install these pre-requisites on your **deployment VM** before continuing.
+
 - Install VC Redist: <https://aka.ms/vs/15/release/vc_redist.x64.exe>
 - Install MS ODBC Driver 17 for SQL Server: <https://www.microsoft.com/download/confirmation.aspx?id=56567>
 - Install SQL CMD x64: <https://go.microsoft.com/fwlink/?linkid=2082790>
@@ -154,7 +161,9 @@ The entire script will take between 1.5 and 2 hours to complete. Major steps inc
 
 ### Task 2: Download artifacts and install PowerShell modules
 
-1. From your **lab VM**, open a PowerShell Window as an administrator, run the following command to download the artifacts
+Perform all of the steps below from your **deployment VM**:
+
+1. Open a PowerShell Window as an administrator, run the following command to download the artifacts
 
     ```powershell
     mkdir c:\labfiles
@@ -178,14 +187,15 @@ The entire script will take between 1.5 and 2 hours to complete. Major steps inc
     }
     ```
 
-  > [!Note]: You may be prompted to install NuGet providers, and receive a prompt that you are installing the module from an untrusted repository. Select **Yes** in both instances to proceed with the setup
+    > [!Note]: You may be prompted to install NuGet providers, and receive a prompt that you are installing the module from an untrusted repository. Select **Yes** in both instances to proceed with the setup
 
 * Install `Az.CosmosDB` module
 
     ```powershell
     Install-Module -Name Az.CosmosDB -AllowClobber
     ```
-    > [!Note]: You recieve a prompt that you are installing the module from an untrusted repository. Select **Yes to All** to proceed with the setup.
+
+    > [!Note]: If you receive a prompt that you are installing the module from an untrusted repository, select **Yes to All** to proceed with the setup.
 
 * Install `sqlserver` module
 
@@ -198,19 +208,23 @@ The entire script will take between 1.5 and 2 hours to complete. Major steps inc
     ```powershell
     Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'; rm .\AzureCLI.msi
     ```
+
 **IMPORTANT**
 
 * **Close the Windows PowerShell window** so you can import the newly installed Az.CosmosDB cmdlet.
 
 ### Task 3: Execute setup scripts
 
-* From your **lab VM**, open Windows PowerShell as an Administrator and execute the following:
+Perform all of the steps below from your **deployment VM**:
+
+* Open Windows PowerShell as an Administrator and execute the following:
 
     ```powershell
     Set-ExecutionPolicy Unrestricted
     ```
-  > [!Note]: You recieve a prompt that you are installing the module from an untrusted repository. Select **Yes to All** to proceed with the setup.
-  
+
+    > [!Note]: If you receive a prompt that you are installing the module from an untrusted repository, select **Yes to All** to proceed with the setup.
+
 * Execute the following to import the `Az.CosmosDB` module:
 
     ```powershell
@@ -225,7 +239,7 @@ The entire script will take between 1.5 and 2 hours to complete. Major steps inc
 
 * Execute `Connect-AzAccount` and sign in to your Microsoft user account when prompted.
 
-    > [!WARNING]: You may recieve the message "TenantId 'xxxxxx-xxxx-xxxx-xxxx' contains more than one active subscription. First one will be selected for further use. You can ignore this at this point, but if you want to select another subscription, use Set-AzContext". In which case you can run ```powershell Set-AzContext SubsciptionName``` to select the subscription you wish to use.
+    > [!WARNING]: You may receive the message "TenantId 'xxxxxx-xxxx-xxxx-xxxx' contains more than one active subscription. The first one will be selected for further use. You can ignore this at this point. When you execute the environment setup, you will choose the subscription in which you deployed the environment resources.
 
 * Execute `az login` and sign in to your Microsoft user account when prompted.
 
@@ -235,7 +249,9 @@ The entire script will take between 1.5 and 2 hours to complete. Major steps inc
 
 1. You will be prompted to setup your Azure PowerShell and Azure CLI context.
 
-2. You may be prompted to enter the name of your desired Azure Subscription. You can copy and paste the value from the list to select one.
+2. If you have mroe than one Azure Subscription, you will be prompted to enter the name of your desired Azure Subscription. You can copy and paste the value from the list to select one. For example:
+
+    ![A subscription is copied and pasted into the text entry.](media/select-desired-subscription.png "Select desired subscription")
 
 3. Enter the name of the resource group you created at the beginning of the environment setup (such as `synapse-in-a-day-demos`). This will make sure automation runs against the correct environment you provisioned in Azure.
 
@@ -243,7 +259,7 @@ The entire script will take between 1.5 and 2 hours to complete. Major steps inc
 
     ![The Azure Cloud Shell window is displayed with a sample of the output from the preceding command.](media/untrusted-repo.png)
 
-    > **NOTE** This script will take up to 75 minutes to complete.
+    > **NOTE** This script will take between 75 and 150 minutes to complete.
 
 #### Potential errors that you can ignore
 
