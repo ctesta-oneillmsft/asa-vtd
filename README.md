@@ -192,7 +192,6 @@ The entire script will take between 1.5 and 2 hours to complete. Major steps inc
     ```powershell
     Install-Module -Name SqlServer -AllowClobber
     ```
-    c
 
 * Install Azure CLI
 
