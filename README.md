@@ -249,7 +249,7 @@ Perform all of the steps below from your **deployment VM**:
 
 1. You will be prompted to setup your Azure PowerShell and Azure CLI context.
 
-2. If you have mroe than one Azure Subscription, you will be prompted to enter the name of your desired Azure Subscription. You can copy and paste the value from the list to select one. For example:
+2. If you have more than one Azure Subscription, you will be prompted to enter the name of your desired Azure Subscription. You can copy and paste the value from the list to select one. For example:
 
     ![A subscription is copied and pasted into the text entry.](media/select-desired-subscription.png "Select desired subscription")
 
@@ -259,7 +259,7 @@ Perform all of the steps below from your **deployment VM**:
 
     ![The Azure Cloud Shell window is displayed with a sample of the output from the preceding command.](media/untrusted-repo.png)
 
-    > **NOTE** This script will take between 75 and 150 minutes to complete.
+    > **NOTE** This script will take between 90 and 150 minutes to complete.
 
 #### Potential errors that you can ignore
 
