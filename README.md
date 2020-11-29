@@ -211,7 +211,7 @@ Perform all of the steps below from your **deployment VM**:
 
 **IMPORTANT**
 
-* **Close the Windows PowerShell window** so you can import the newly installed Az.CosmosDB cmdlet.
+* Once the last command has completed, **close the Windows PowerShell window** so you can import the newly installed Az.CosmosDB cmdlet.
 
 ### Task 3: Execute setup scripts
 
