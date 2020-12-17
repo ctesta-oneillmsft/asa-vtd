@@ -156,7 +156,7 @@ Install these pre-requisites on your **deployment VM** before continuing.
 - Install MS ODBC Driver 17 for SQL Server: <https://www.microsoft.com/download/confirmation.aspx?id=56567>
 - Install SQL CMD x64: <https://go.microsoft.com/fwlink/?linkid=2082790>
 - Install Microsoft Online Services Sign-In Assistant for IT Professionals RTW: <https://www.microsoft.com/download/details.aspx?id=41950>
-- Install [Git client](https://git-scm.com/downloads)
+- Install [Git client](https://git-scm.com/downloads) accepting all the default options in the setup.
 - [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/windows-powershell/install/installing-windows-powershell?view=powershell-7)
 
 ### Task 2: Download artifacts and install PowerShell modules
