@@ -1901,6 +1901,7 @@ Export-ModuleMember -Function Set-SqlAdministrator
 Export-ModuleMember -Function Update-PowerBIDatasetConnection
 Export-ModuleMember -Function Get-PowerBIDatasetId
 Export-ModuleMember -Function New-PowerBIWS
+Export-ModuleMember -Function Get-PowerBIWorkspace
 Export-ModuleMember -Function Get-PowerBIWorkspaceId
 Export-ModuleMember -Function Add-PowerBIWorkspaceUser
 Export-ModuleMember -Function Upload-PowerBIReport
