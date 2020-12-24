@@ -1099,7 +1099,16 @@ $job = Get-AzStreamAnalyticsJob -ResourceGroupName $resourceGroupName -Name $asa
 $principalId = (Get-AzADServicePrincipal -DisplayName $asaName).id
 
 #$wsname = "asa-exp-$uniqueId";
-$wsId = Get-PowerBiWorkspaceId "$resourceGroupName";
+$ws = Get-PowerBiWorkspace $resourceGroupName;
+
+if ($ws)
+{
+    $wsid = $ws.id;
+}
+else
+{
+    $wsId = Get-PowerBiWorkspaceId "$resourceGroupName";
+}
 
 if (!$wsid)
 {
