@@ -34,8 +34,7 @@ GO
 COPY INTO [dbo].[Twitter]
 FROM 'https://#STORAGE_ACCOUNT_NAME#.blob.core.windows.net/twitterdata/dbo.TwitterAnalytics.parquet'
 WITH (
-    FILE_TYPE = 'PARQUET',
-    CREDENTIAL=(IDENTITY= 'Shared Access Signature', SECRET='#SAS_KEY#')
+    FILE_TYPE = 'PARQUET'
 );
 GO
 
