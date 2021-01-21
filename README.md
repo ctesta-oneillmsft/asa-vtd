@@ -10,8 +10,9 @@
   - [Environment setup instructions](#environment-setup-instructions)
   - [Azure Setup](#azure-setup)
     - [Task 1: Create a resource group in Azure](#task-1-create-a-resource-group-in-azure)
-    - [Task 2: Create an Azure VM for the deployment scripts](#task-2-create-an-azure-vm-for-the-deployment-scripts)
-    - [Task 3: Create Azure Synapse Analytics workspace](#task-3-create-azure-synapse-analytics-workspace)
+    - [Task 2: Create a Power BI workspace](#task-2-create-a-power-bi-workspace)
+    - [Task 3: Create an Azure VM for the deployment scripts](#task-3-create-an-azure-vm-for-the-deployment-scripts)
+    - [Task 4: Create Azure Synapse Analytics workspace](#task-4-create-azure-synapse-analytics-workspace)
   - [Before starting](#before-starting)
   - [Steps & Timing](#steps--timing)
     - [Task 1: Pre-requisites](#task-1-pre-requisites)
@@ -60,13 +61,29 @@
 
 4. Select the **Create** button on the **Resource group** overview page.
 
-5. On the **Create a resource group** screen, select your desired Subscription and Region. For Resource group, enter **synapse-in-a-day-demos**, then select the **Review + Create** button.
+5. On the **Create a resource group** screen, select your desired Subscription and Region. For Resource group, enter **synapse-in-a-day-demos**, then select the **Review + Create** button. **Copy the resource group name** and save it in Notepad or similar for later reference.
 
     ![The Create a resource group form is displayed populated with Synapse-MCW as the resource group name.](media/bhol_resourcegroupform.png)
 
 6. Select the **Create** button once validation has passed.
 
-### Task 2: Create an Azure VM for the deployment scripts
+> **Important**: Take note of the _exact_ resource group name you provided for the steps that follow.
+
+### Task 2: Create a Power BI workspace
+
+This step is important if you are using the Microsoft tenant since the setup script will fail when attempting to create the Power BI workspace.
+
+1. Sign in into the [Power BI Portal](https://powerbi.microsoft.com/) using your Azure credentials.
+
+2. Select **Workspaces** in the left-hand menu **(1)**, then select **Create a workspace (2)**.
+
+    ![The Workspaces menu item and Create a workspace button are highlighted.](media/pbi-create-workspace-link.png "Create a workspace")
+
+3. In the form, enter the **same name as your resource group** into the **Workspace name** field (such as `synapse-in-a-day-demos`), then select **Save**.
+
+    ![The form is configured as described.](media/pbi-create-workspace.png "Create a workspace")
+
+### Task 3: Create an Azure VM for the deployment scripts
 
 We highly recommend executing the PowerShell scripts on an Azure Virtual Machine instead of from your local machine. Doing so eliminates issues due to pre-existing dependencies and more importantly, network/bandwidth-related issues while executing the scripts.
 
@@ -86,7 +103,7 @@ We highly recommend executing the PowerShell scripts on an Azure Virtual Machine
    | Region                         | _select the resource group's location_             |
    | Availability options           | _select `No infrastructure redundancy required`_   |
    | Image                          | _select `Windows 10 Pro, Version 1809 - Gen1`_     |
-   | Azure Spot instance            | _select `No`_                                      |
+   | Azure Spot instance            | _set to `Unchecked`_                                      |
    | Size                           | _select `Standard_D8s_v3`_                         |
    | Username                       | _select `labuser`_                             |
    | Password                       | _enter a password you will remember_               |
@@ -116,7 +133,7 @@ We highly recommend executing the PowerShell scripts on an Azure Virtual Machine
 
     ![The Yes button is highlighted.](media/rdp-connect-certificate.png "Remote Desktop Connection")
 
-### Task 3: Create Azure Synapse Analytics workspace
+### Task 4: Create Azure Synapse Analytics workspace
 
 1. Deploy the workspace through the following Azure ARM template (press the button below):
 
@@ -273,11 +290,30 @@ You may encounter a few errors and warnings during the script execution. The err
 
     ![Errors are displayed.](media/error-notebook-create.png "Notebook creation errors")
 
+3. Toward the end of the script, you may see the following error. If you do, it can be safely ignored:
+
+    ```PowerShell
+    Starting PowerBI Artifact Provisioning
+    Invoke-WebRequest : The response content cannot be parsed because the Internet Explorer engine is not available, or Internet Explorer's first-launch configuration is not complete. Specify the UseBasicParsing parameter and try again.
+    At C:\labfiles\synapse-in-a-day-deployment\artifacts\environment-setup\solliance-synapse-automation\solliance-synapse-automation. char:15
+    + ...   $result = Invoke-WebRequest -Uri $url -Method GET -ContentType "app ...
+    +                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        + CategoryInfo          : NotImplemented: (:) [Invoke-WebRequest], NotSupportedException
+        + FullyQualifiedErrorId : WebCmdletIEDomNotSupportedException,Microsoft.PowerShell.Commands.InvokeWebRequestCommand
+
+    Cannot index into a null array.
+    At C:\labfiles\synapse-in-a-day-deployment\artifacts\environment-setup\solliance-synapse-automation\solliance-synapse-automation. char:5
+    +     $homeCluster = $result.Headers["home-cluster-uri"]
+    +     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+        + FullyQualifiedErrorId : NullArray
+    ```
+
 ### Task 4: Configure Power BI dataset credentials
 
 Complete this task after setup has completed.
 
-1. Sign in into the [Power BI Portal](https://powerbi.microsoft.com/en-us/) using your Azure credentials.
+1. Sign in into the [Power BI Portal](https://powerbi.microsoft.com/) using your Azure credentials.
 
 2. From the hamburger menu select **Workspaces** to access the list of workspaces available to you. Select your workspace.
 
