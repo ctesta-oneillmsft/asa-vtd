@@ -315,7 +315,7 @@ Complete this task after setup has completed.
 
 1. Sign in into the [Power BI Portal](https://powerbi.microsoft.com/) using your Azure credentials.
 
-2. From the hamburger menu select **Workspaces** to access the list of workspaces available to you. Select your workspace.
+2. From the hamburger menu select **Workspaces** to access the list of workspaces available to you. Select your workspace, which **has the same name as your Azure resource group** (eg. `synapse-in-a-day-demos`).
 
     ![The workspaces button from the hamburger menu is selected to list workspaces available.](media/powerbi_workspace_selection.png)
 
