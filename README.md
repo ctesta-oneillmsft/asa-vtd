@@ -131,13 +131,13 @@ We highly recommend executing the PowerShell scripts on an Azure Virtual Machine
 
 1. Deploy the workspace through the following Azure ARM template (press the button below):
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fctesta-oneillmsft%2Fasa-vtd%2Fmaster%2Fartifacts%2Fenvironment-setup%2fautomation%2F00-asa-workspace-core.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png" /></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fctesta-oneillmsft%2Fasa-vtd%2Fmaster%2Fartifacts%2Fenvironment-setup%2fautomation%2F00-asa-workspace-core.json" target="_blank"><img src="https://aka.ms/deploytoazurebutton" /></a>
 
 2. On the **Custom deployment** form fill in the fields described below.
 
    - **Subscription**: Select your desired subscription for the deployment.
    - **Resource group**: Select the resource group you previously created.
-   - **Region**: The datacenter where your Azure Synapse environment will be created.
+   - **Region**: The region where your Azure Synapse environment will be created.
 
         > **Important**: The `Region` field under 'Parameters' will list the Azure regions where Azure Synapse Analytics is available as of November 2020. This will help you find a region where the service is available without being limited to where the resource group is defined.
 
