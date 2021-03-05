@@ -9,8 +9,8 @@
   - [Requirements](#requirements)
   - [Environment setup instructions](#environment-setup-instructions)
   - [Azure Setup](#azure-setup)
-    - [Task 1: Create a resource group in Azure](#task-1-create-a-resource-group-in-azure)
-    - [Task 2: Create a Power BI workspace](#task-2-create-a-power-bi-workspace)
+    - [Task 1: Create a Power BI workspace](#task-1-create-a-power-bi-workspace)
+    - [Task 2: Create a resource group in Azure](#task-2-create-a-resource-group-in-azure)
     - [Task 3: Create an Azure VM for the deployment scripts](#task-3-create-an-azure-vm-for-the-deployment-scripts)
     - [Task 4: Create Azure Synapse Analytics workspace](#task-4-create-azure-synapse-analytics-workspace)
   - [Before starting](#before-starting)
@@ -47,7 +47,21 @@
 
 ## Azure Setup
 
-### Task 1: Create a resource group in Azure
+### Task 1: Create a Power BI workspace
+
+> Since Power BI workspaces must be unique within your tenant, you must first create the new workspace so you can **use the same name** when you create your Azure resource group in the next task.
+
+1. Sign in into the [Power BI Portal](https://powerbi.microsoft.com/) using your Azure credentials.
+
+2. Select **Workspaces** in the left-hand menu **(1)**, then select **Create a workspace (2)**.
+
+    ![The Workspaces menu item and Create a workspace button are highlighted.](media/pbi-create-workspace-link.png "Create a workspace")
+
+3. In the form, enter **`synapse-in-a-day-demos`** (no spaces or special characters) into the **Workspace name** field (append a unique value to the name if the workspace name is already in use), then select **Save**. **Copy the workspace name** and save it in Notepad or similar for later reference.
+
+    ![The form is configured as described.](media/pbi-create-workspace.png "Create a workspace")
+
+### Task 2: Create a resource group in Azure
 
 1. Log into the [Azure Portal](https://portal.azure.com) using your Azure credentials.
 
@@ -61,27 +75,13 @@
 
 4. Select the **Create** button on the **Resource group** overview page.
 
-5. On the **Create a resource group** screen, select your desired Subscription and Region. For Resource group, enter **synapse-in-a-day-demos**, then select the **Review + Create** button. **Copy the resource group name** and save it in Notepad or similar for later reference.
+5. On the **Create a resource group** screen, select your desired Subscription and Region. For Resource group, enter **the same name as your Power BI workspace name** (such as `synapse-in-a-day-demos`), then select the **Review + Create** button.
 
     ![The Create a resource group form is displayed populated with Synapse-MCW as the resource group name.](media/bhol_resourcegroupform.png)
 
 6. Select the **Create** button once validation has passed.
 
 > **Important**: Take note of the _exact_ resource group name you provided for the steps that follow.
-
-### Task 2: Create a Power BI workspace
-
-This step is important if you are using the Microsoft tenant since the setup script will fail when attempting to create the Power BI workspace.
-
-1. Sign in into the [Power BI Portal](https://powerbi.microsoft.com/) using your Azure credentials.
-
-2. Select **Workspaces** in the left-hand menu **(1)**, then select **Create a workspace (2)**.
-
-    ![The Workspaces menu item and Create a workspace button are highlighted.](media/pbi-create-workspace-link.png "Create a workspace")
-
-3. In the form, enter the **same name as your resource group** into the **Workspace name** field (such as `synapse-in-a-day-demos`), then select **Save**.
-
-    ![The form is configured as described.](media/pbi-create-workspace.png "Create a workspace")
 
 ### Task 3: Create an Azure VM for the deployment scripts
 
