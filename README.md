@@ -333,7 +333,7 @@ Complete this task after setup has completed.
 
 1. Navigate to the resource group into which you deployed this environment.
 
-2. Select the **SQL pool** (`SQLPool01`).
+2. Select the **Dedicated SQL pool** (`SQLPool01`).
 
     ![The SQL pool is highlighted.](media/sql-pool.png "SQLPool01")
 
