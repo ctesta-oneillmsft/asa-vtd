@@ -65,21 +65,15 @@
 
 1. Log into the [Azure Portal](https://portal.azure.com) using your Azure credentials.
 
-2. On the Azure Portal home screen, select the **+ Create a resource** tile.
+2. On the Azure Portal home screen, select the **Menu** button on the top-left corner **(1)**. Hover over **Resource groups (2)**, then select **+ Create (3)**.
 
-    ![A portion of the Azure Portal home screen is displayed with the + Create a resource tile highlighted.](media/bhol_createaresource.png)
+    ![The Create button is highlighted.](media/new-resourcegroup.png "Create resource group")
 
-3. In the **Search the Marketplace** text box, type **Resource group** and press the **Enter** key.
-
-    ![On the new resource screen Resource group is entered as a search term.](media/bhol_searchmarketplaceresourcegroup.png)
-
-4. Select the **Create** button on the **Resource group** overview page.
-
-5. On the **Create a resource group** screen, select your desired Subscription and Region. For Resource group, enter **the same name as your Power BI workspace name** (such as `synapse-in-a-day-demos`), then select the **Review + Create** button.
+3. On the **Create a resource group** screen, select your desired Subscription and Region. For Resource group, enter **the same name as your Power BI workspace name** (such as `synapse-in-a-day-demos`), then select the **Review + Create** button.
 
     ![The Create a resource group form is displayed populated with Synapse-MCW as the resource group name.](media/bhol_resourcegroupform.png)
 
-6. Select the **Create** button once validation has passed.
+4. Select the **Create** button once validation has passed.
 
 > **Important**: Take note of the _exact_ resource group name you provided for the steps that follow.
 
